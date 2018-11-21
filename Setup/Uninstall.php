@@ -3,6 +3,7 @@ namespace Icovn\CategoryCustomAttribute\Setup;
 
 use Magento\Catalog\Model\Category;
 
+use Magento\Framework\Setup\LoggerInterface;
 use Magento\Framework\Setup\UninstallInterface;
 use Magento\Framework\Setup\ModuleContextInterface;
 use Magento\Framework\Setup\SchemaSetupInterface;

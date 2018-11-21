@@ -2,8 +2,10 @@
 namespace Icovn\CategoryCustomAttribute\Setup;
 
 use Magento\Customer\Model\Category;
+
 use Magento\Eav\Api\AttributeRepositoryInterface;
 use Magento\Eav\Model\Config;
+
 use Magento\Framework\App\Cache\TypeListInterface;
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\Setup\LoggerInterface;
@@ -48,9 +50,9 @@ class UpgradeData implements UpgradeDataInterface
      */
     public function upgrade(ModuleDataSetupInterface $setup, ModuleContextInterface $context)
     {
+        $this->logger->logInline("upgradeData Icovn_CategoryCustomAttribute");
         $setup->startSetup();
 
-        $this->logger->logInline("upgradeData Icovn_CategoryCustomAttribute");
         if (version_compare($context->getVersion(), '0.0.2') < 0) {
             print("version: " . $context->getVersion());
             $this->deleteCustomAttribute();
