@@ -3,6 +3,7 @@
 namespace Icovn\CategoryCustomAttribute\Setup;
 
 use Magento\Catalog\Model\Category;
+use Magento\Catalog\Setup\CategorySetupFactory;
 
 use Magento\Framework\Setup\LoggerInterface;
 use Magento\Framework\Setup\ModuleContextInterface;
@@ -15,23 +16,27 @@ use Magento\Eav\Setup\EavSetupFactory;
 class InstallData implements InstallDataInterface
 {
     private $eavSetupFactory;
+    protected $categorySetupFactory;
     protected $logger;
 
     public function __construct(
         EavSetupFactory $eavSetupFactory,
+        CategorySetupFactory $categorySetupFactory,
         LoggerInterface $logger
     ) {
         $this->eavSetupFactory = $eavSetupFactory;
+        $this->categorySetupFactory = $categorySetupFactory;
         $this->logger = $logger;
     }
 
     public function install(ModuleDataSetupInterface $setup, ModuleContextInterface $context)
     {
-        $this->logger->logInline("install Icovn_CategoryCustomAttribute");
+        $this->logger->logInline("install Topica_CategoryCustomAttribute");
 
         $eavSetup = $this->eavSetupFactory->create(['setup' => $setup]);
+        $setup = $this->categorySetupFactory->create(['setup' => $setup]);
 
-        $eavSetup->addAttribute(Category::ENTITY, 'my_attribute', [
+        $setup->addAttribute(Category::ENTITY, 'my_attribute', [
             'type'     => 'int',
             'label'    => 'My Category Attribute',
             'input'    => 'boolean',
@@ -43,7 +48,7 @@ class InstallData implements InstallDataInterface
             'group'    => 'Display Settings',
         ]);
 
-        $eavSetup->addAttribute(Category::ENTITY, 'custom_image', [
+        $setup->addAttribute(Category::ENTITY, 'custom_image', [
             'type'     => 'varchar',
             'label'    => 'Custom Image',
             'input'    => 'image',
@@ -52,5 +57,18 @@ class InstallData implements InstallDataInterface
             'global'   => ScopedAttributeInterface::SCOPE_STORE,
             'group'    => 'General Information',
         ]);
+
+        $setup->startSetup();
+        $tableName = $setup->getTable('edm_option');
+        $data = [
+            [
+                'option_name' => 'test',
+            ],
+            [
+                'option_value' => 'test value',
+            ],
+        ];
+        $setup->getConnection()->insertMultiple($tableName, $data);
+        $setup->endSetup();
     }
 }
