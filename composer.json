@@ -4,12 +4,12 @@
 
   "type": "magento2-module",
   "version": "1.0.0",
-  "license": "Apache License 2.0",
+  "license": "Apache-2.0",
   "authors": [
     {
       "name": "Nguyễn Quang Huy",
       "email": "quanghuy.ico@gmail.com",
-      "homepage": "http:/icovn.me"
+      "homepage": "http://icovn.me"
     }
   ],
 
