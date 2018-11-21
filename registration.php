@@ -1,4 +1,4 @@
 <?php
 use \Magento\Framework\Component\ComponentRegistrar;
 
-ComponentRegistrar::register(ComponentRegistrar::MODULE, 'Icovn_CategoryCustomAttribute', __DIR__);
+ComponentRegistrar::register(ComponentRegistrar::MODULE, 'icovn_magento2-category-custom-attribute', __DIR__);
