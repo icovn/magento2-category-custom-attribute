@@ -31,7 +31,20 @@ class InstallData implements InstallDataInterface
 
     public function install(ModuleDataSetupInterface $setup, ModuleContextInterface $context)
     {
-        $this->logger->logInline("install Topica_CategoryCustomAttribute");
+        $this->logger->logInline("installData Topica_CategoryCustomAttribute");
+
+        $setup->startSetup();
+        $tableName = $setup->getTable('edm_option');
+        $data = [
+            [
+                'option_name' => 'test',
+            ],
+            [
+                'option_value' => 'test value',
+            ],
+        ];
+        $setup->getConnection()->insertMultiple($tableName, $data);
+        $setup->endSetup();
 
         $eavSetup = $this->eavSetupFactory->create(['setup' => $setup]);
         $setup = $this->categorySetupFactory->create(['setup' => $setup]);
@@ -57,18 +70,5 @@ class InstallData implements InstallDataInterface
             'global'   => ScopedAttributeInterface::SCOPE_STORE,
             'group'    => 'General Information',
         ]);
-
-        $setup->startSetup();
-        $tableName = $setup->getTable('edm_option');
-        $data = [
-            [
-                'option_name' => 'test',
-            ],
-            [
-                'option_value' => 'test value',
-            ],
-        ];
-        $setup->getConnection()->insertMultiple($tableName, $data);
-        $setup->endSetup();
     }
 }
