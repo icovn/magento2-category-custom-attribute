@@ -29,7 +29,7 @@ class Uninstall implements UninstallInterface
     public function uninstall(SchemaSetupInterface $setup, ModuleContextInterface $context)
     {
         print("version: " . $context->getVersion());
-        $this->logger->logInline("uninstall icovn_magento2-category-custom-attribute");
+        $this->logger->logInline("uninstall Icovn_CategoryCustomAttribute");
 
         $setup->startSetup();
 

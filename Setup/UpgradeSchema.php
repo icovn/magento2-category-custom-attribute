@@ -28,7 +28,7 @@ class UpgradeSchema implements UpgradeSchemaInterface
 
     public function upgrade(SchemaSetupInterface $setup, ModuleContextInterface $context)
     {
-        $this->logger->logInline("upgradeSchema icovn_magento2-category-custom-attribute");
+        $this->logger->logInline("upgradeSchema Icovn_CategoryCustomAttribute");
 
         $eavSetup = $this->eavSetupFactory->create(['setup' => $setup]);
         $setup = $this->categorySetupFactory->create(['setup' => $setup]);

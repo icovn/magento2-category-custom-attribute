@@ -31,7 +31,7 @@ class InstallData implements InstallDataInterface
 
     public function install(ModuleDataSetupInterface $setup, ModuleContextInterface $context)
     {
-        $this->logger->logInline("installData icovn_magento2-category-custom-attribute");
+        $this->logger->logInline("installData Icovn_CategoryCustomAttribute");
 
         $eavSetup = $this->eavSetupFactory->create(['setup' => $setup]);
         $setup = $this->categorySetupFactory->create(['setup' => $setup]);
