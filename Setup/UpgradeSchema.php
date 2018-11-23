@@ -3,12 +3,13 @@
 use Magento\Catalog\Model\Category;
 use Magento\Catalog\Setup\CategorySetupFactory;
 
-use Magento\Framework\Setup\LoggerInterface;
 use Magento\Framework\Setup\UpgradeSchemaInterface;
 use Magento\Framework\Setup\ModuleContextInterface;
 use Magento\Framework\Setup\SchemaSetupInterface;
 
 use Magento\Eav\Setup\EavSetupFactory;
+
+use Psr\Log\LoggerInterface;
 
 class UpgradeSchema implements UpgradeSchemaInterface
 {

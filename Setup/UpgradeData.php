@@ -8,10 +8,11 @@ use Magento\Eav\Model\Config;
 
 use Magento\Framework\App\Cache\TypeListInterface;
 use Magento\Framework\Exception\LocalizedException;
-use Magento\Framework\Setup\LoggerInterface;
 use Magento\Framework\Setup\ModuleContextInterface;
 use Magento\Framework\Setup\ModuleDataSetupInterface;
 use Magento\Framework\Setup\UpgradeDataInterface;
+
+use Psr\Log\LoggerInterface;
 
 class UpgradeData implements UpgradeDataInterface
 {

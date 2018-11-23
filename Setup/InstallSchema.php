@@ -3,11 +3,11 @@ namespace Icovn\CategoryCustomAttribute\Setup;
 
 use \Magento\Framework\DB\Ddl\Table;
 
-use \Magento\Framework\Setup\LoggerInterface;
 use \Magento\Framework\Setup\InstallSchemaInterface;
 use \Magento\Framework\Setup\ModuleContextInterface;
 use \Magento\Framework\Setup\SchemaSetupInterface;
 
+use Psr\Log\LoggerInterface;
 
 class InstallSchema implements InstallSchemaInterface
 {

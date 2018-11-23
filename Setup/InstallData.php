@@ -5,13 +5,14 @@ namespace Icovn\CategoryCustomAttribute\Setup;
 use Magento\Catalog\Model\Category;
 use Magento\Catalog\Setup\CategorySetupFactory;
 
-use Magento\Framework\Setup\LoggerInterface;
 use Magento\Framework\Setup\ModuleContextInterface;
 use Magento\Framework\Setup\ModuleDataSetupInterface;
 use Magento\Framework\Setup\InstallDataInterface;
 
 use Magento\Eav\Model\Entity\Attribute\ScopedAttributeInterface;
 use Magento\Eav\Setup\EavSetupFactory;
+
+use Psr\Log\LoggerInterface;
 
 class InstallData implements InstallDataInterface
 {
