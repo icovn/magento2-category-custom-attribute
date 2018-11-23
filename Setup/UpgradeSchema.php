@@ -29,7 +29,7 @@ class UpgradeSchema implements UpgradeSchemaInterface
 
     public function upgrade(SchemaSetupInterface $setup, ModuleContextInterface $context)
     {
-        $this->logger->logInline("upgradeSchema Icovn_CategoryCustomAttribute");
+        $this->logger->info("upgradeSchema Icovn_CategoryCustomAttribute");
 
         $eavSetup = $this->eavSetupFactory->create(['setup' => $setup]);
         $setup = $this->categorySetupFactory->create(['setup' => $setup]);

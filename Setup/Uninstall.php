@@ -30,7 +30,7 @@ class Uninstall implements UninstallInterface
     public function uninstall(SchemaSetupInterface $setup, ModuleContextInterface $context)
     {
         print("version: " . $context->getVersion());
-        $this->logger->logInline("uninstall Icovn_CategoryCustomAttribute");
+        $this->logger->info("uninstall Icovn_CategoryCustomAttribute");
 
         $setup->startSetup();
 

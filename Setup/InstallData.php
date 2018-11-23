@@ -32,7 +32,7 @@ class InstallData implements InstallDataInterface
 
     public function install(ModuleDataSetupInterface $setup, ModuleContextInterface $context)
     {
-        $this->logger->logInline("installData Icovn_CategoryCustomAttribute");
+        $this->logger->info("installData Icovn_CategoryCustomAttribute");
 
         $eavSetup = $this->eavSetupFactory->create(['setup' => $setup]);
         $setup = $this->categorySetupFactory->create(['setup' => $setup]);

@@ -52,7 +52,7 @@ class UpgradeData implements UpgradeDataInterface
     public function upgrade(ModuleDataSetupInterface $setup, ModuleContextInterface $context)
     {
         print("version: " . $context->getVersion());
-        $this->logger->logInline("upgradeData Icovn_CategoryCustomAttribute");
+        $this->logger->info("upgradeData Icovn_CategoryCustomAttribute");
         $setup->startSetup();
 
         if (version_compare($context->getVersion(), '0.0.2') < 0) {

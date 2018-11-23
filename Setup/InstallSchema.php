@@ -21,7 +21,7 @@ class InstallSchema implements InstallSchemaInterface
 
     public function install(SchemaSetupInterface $setup, ModuleContextInterface $context)
     {
-        $this->logger->logInline("installSchema Topica_CategoryCustomAttribute");
+        $this->logger->info("installSchema Topica_CategoryCustomAttribute");
 
         $installer = $setup;
         $installer->startSetup();
