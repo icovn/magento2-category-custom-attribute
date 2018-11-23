@@ -1,19 +1,16 @@
 <?php
 
-namespace Icovn\CategoryCustomAttribute\Setup;
-
 use Magento\Catalog\Model\Category;
 use Magento\Catalog\Setup\CategorySetupFactory;
 
 use Magento\Framework\Setup\LoggerInterface;
+use Magento\Framework\Setup\UpgradeSchemaInterface;
 use Magento\Framework\Setup\ModuleContextInterface;
-use Magento\Framework\Setup\ModuleDataSetupInterface;
-use Magento\Framework\Setup\InstallDataInterface;
+use Magento\Framework\Setup\SchemaSetupInterface;
 
-use Magento\Eav\Model\Entity\Attribute\ScopedAttributeInterface;
 use Magento\Eav\Setup\EavSetupFactory;
 
-class InstallData implements InstallDataInterface
+class UpgradeSchema implements UpgradeSchemaInterface
 {
     private $eavSetupFactory;
     protected $categorySetupFactory;
@@ -29,25 +26,14 @@ class InstallData implements InstallDataInterface
         $this->logger = $logger;
     }
 
-    public function install(ModuleDataSetupInterface $setup, ModuleContextInterface $context)
+    public function upgrade(SchemaSetupInterface $setup, ModuleContextInterface $context)
     {
-        $this->logger->logInline("installData icovn_magento2-category-custom-attribute");
-
-        $setup->startSetup();
-        $tableName = $setup->getTable('edm_option');
-        $data = [
-            [
-                'option_name' => 'test',
-            ],
-            [
-                'option_value' => 'test value',
-            ],
-        ];
-        $setup->getConnection()->insertMultiple($tableName, $data);
-        $setup->endSetup();
+        $this->logger->logInline("upgradeSchema icovn_magento2-category-custom-attribute");
 
         $eavSetup = $this->eavSetupFactory->create(['setup' => $setup]);
         $setup = $this->categorySetupFactory->create(['setup' => $setup]);
+
+        $setup->removeAttribute(Category::ENTITY, 'attribute_id');
 
         $setup->addAttribute(Category::ENTITY, 'my_attribute', [
             'type'     => 'int',

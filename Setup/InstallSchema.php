@@ -21,7 +21,7 @@ class InstallSchema implements InstallSchemaInterface
 
     public function install(SchemaSetupInterface $setup, ModuleContextInterface $context)
     {
-        $this->logger->logInline("installSchema Topica_CategoryCustomAttribute");
+        $this->logger->logInline("installSchema icovn_magento2-category-custom-attribute");
 
         $installer = $setup;
         $installer->startSetup();
