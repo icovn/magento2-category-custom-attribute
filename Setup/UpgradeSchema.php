@@ -31,31 +31,12 @@ class UpgradeSchema implements UpgradeSchemaInterface
     {
         $this->logger->info("upgradeSchema Icovn_CategoryCustomAttribute");
 
-        $eavSetup = $this->eavSetupFactory->create(['setup' => $setup]);
-        $setup = $this->categorySetupFactory->create(['setup' => $setup]);
+        $setup->startSetup();
 
-        $setup->removeAttribute(Category::ENTITY, 'attribute_id');
+        if (version_compare($context->getVersion(), '1.1.2') < 0) {
+            $this->logger->info("upgradeSchema Icovn_CategoryCustomAttribute ...");
+        }
 
-        $setup->addAttribute(Category::ENTITY, 'my_attribute', [
-            'type'     => 'int',
-            'label'    => 'My Category Attribute',
-            'input'    => 'boolean',
-            'source'   => 'Magento\Eav\Model\Entity\Attribute\Source\Boolean',
-            'visible'  => true,
-            'default'  => '0',
-            'required' => false,
-            'global'   => ScopedAttributeInterface::SCOPE_STORE,
-            'group'    => 'Display Settings',
-        ]);
-
-        $setup->addAttribute(Category::ENTITY, 'custom_image', [
-            'type'     => 'varchar',
-            'label'    => 'Custom Image',
-            'input'    => 'image',
-            'backend'  => 'Magento\Catalog\Model\Category\Attribute\Backend\Image',
-            'required' => false,
-            'global'   => ScopedAttributeInterface::SCOPE_STORE,
-            'group'    => 'General Information',
-        ]);
+        $setup->endSetup();
     }
 }

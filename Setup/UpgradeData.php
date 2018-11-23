@@ -1,7 +1,7 @@
 <?php
 namespace Icovn\CategoryCustomAttribute\Setup;
 
-use Magento\Customer\Model\Category;
+use Magento\Catalog\Model\Category;
 
 use Magento\Eav\Api\AttributeRepositoryInterface;
 use Magento\Eav\Model\Config;
@@ -55,7 +55,7 @@ class UpgradeData implements UpgradeDataInterface
         $this->logger->info("upgradeData Icovn_CategoryCustomAttribute");
         $setup->startSetup();
 
-        if (version_compare($context->getVersion(), '0.0.2') < 0) {
+        if (version_compare($context->getVersion(), '1.1.2') < 0) {
             $this->deleteCustomAttribute();
         }
 
