@@ -33,19 +33,6 @@ class InstallData implements InstallDataInterface
     {
         $this->logger->logInline("installData icovn_magento2-category-custom-attribute");
 
-        $setup->startSetup();
-        $tableName = $setup->getTable('edm_option');
-        $data = [
-            [
-                'option_name' => 'test',
-            ],
-            [
-                'option_value' => 'test value',
-            ],
-        ];
-        $setup->getConnection()->insertMultiple($tableName, $data);
-        $setup->endSetup();
-
         $eavSetup = $this->eavSetupFactory->create(['setup' => $setup]);
         $setup = $this->categorySetupFactory->create(['setup' => $setup]);
 
